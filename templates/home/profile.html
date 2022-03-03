@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block contactactive %} active {% endblock contactactive %}
+
+{% block css %}
+.footer{
+    margin-top:78px;
+}
+{% endblock css %}
+
+
+{% block body %}
+{% load static %}
+<div class="container my-4">
+    <div class="wrapper">
+        <h1 style="text-align:center;">My Profile</h1>
+        <div style='text-align:center;'>
+            <img src='{% static "home/images/Profile.png" %}' style='width:192px;border: 2px solid black;border-radius:50%;'>
+          </div>"
+        <h3 style="text-align:center;">Welcome,</h3>
+        <h4 style="text-align:center;">{{user.first_name}} {{user.last_name}}</h4>
+
+        <table class="table table-bordered w-50 mx-auto">
+
+            <tr>
+                <td><b>Username </b></td>
+                <td>{{user.username}}</td>
+            </tr>
+
+
+            <tr>
+
+                <td><b>First Name</b></td>
+                <td>{{user.first_name}}</td>
+
+            </tr>
+            <tr>
+
+                <td><b>Last Name</b></td>
+                <td>{{user.last_name}}</td>
+
+            </tr>
+            <tr>
+
+                <td><b>Email</b></td>
+                <td>{{user.email}}</td>
+            </tr>
+        </table>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModalCenter" style='float: right;margin-right: 269px;'>
+            Edit profile
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLongTitle">Update Profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/signup" method='post'>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="Choose a unique username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname"
+                                    placeholder="Enter Your First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname"
+                                    placeholder="Enter Your Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="name@example.com" required>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
